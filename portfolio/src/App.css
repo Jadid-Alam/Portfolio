@@ -1,0 +1,52 @@
+@media (min-width: 1025px) {
+  body {
+    font-size: 18px;
+    background-color: lightyellow;
+  }
+
+  main,header,footer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+
+  .content {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  body {
+    font-size: 13px;
+    background-color: lightgreen;
+  }
+
+  main,header,footer {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+  }
+
+  .content {
+    grid-column: 2;
+  }
+
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 11px;
+    background-color: lightblue;
+  }
+
+  main,header,footer {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+  }
+
+  .content {
+    grid-column: 2;
+  }
+
+}
+
+
+
