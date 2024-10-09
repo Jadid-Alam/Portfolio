@@ -1,4 +1,4 @@
-import './Home.css';
+import './index.css';
 import React , {useState, useEffect} from 'react';
 import myImage from './images/LeetcodeProfile.PNG';
 import darkModeImage from './images/night-mode.png';
@@ -105,7 +105,7 @@ const Home = () => {
     const colorString = `rgb(${color.r}, ${color.g}, ${color.b})`;
   return (
       <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
-          <div className='gradient' style={fadingCircle}></div>
+        <div className='gradient' style={fadingCircle}></div>
         <header className={`fixed top-0 left-0 w-full text-mnav font-semibold md:text-nav colour md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
               <h4 className="p-1 max-w-40 md:p-2" style={{ color: colorString }}>Jadid Alam</h4>
                 <nav className="mr-auto">
@@ -146,7 +146,7 @@ const Home = () => {
                     <h2 id='title' className={`py-96 p-2 text-mheading md:p-3 md:py-96 md:text-heading 
                       fade-in duration-1000 ease-in-out ${fading['title'] ? 'opacity-100' : 'opacity-0'} 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>I am <b style={{ color: colorString }}>Jadid Alam</b>, 
-                      an aspiring student pursuing a career in the tech industry.</h2>
+                      a programmer pursuing a career in the tech industry.</h2>
                 </div>
 
                 <div className="py-4 md:py-8">
