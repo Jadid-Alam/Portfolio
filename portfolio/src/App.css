@@ -1,8 +1,9 @@
+.gradient {
+  background: radial-gradient(circle, #e9d5ff, #fefce8, #fefce8); 
+  animation: gradient 15s infinite;
+}
+
 @media (min-width: 1025px) {
-  body {
-    font-size: 18px;
-    background-color: lightyellow;
-  }
 
   main,header,footer {
     display: grid;
@@ -15,10 +16,6 @@
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-  body {
-    font-size: 13px;
-    background-color: lightgreen;
-  }
 
   main,header,footer {
     display: grid;
@@ -32,10 +29,6 @@
 }
 
 @media (max-width: 640px) {
-  body {
-    font-size: 11px;
-    background-color: lightblue;
-  }
 
   main,header,footer {
     display: grid;
