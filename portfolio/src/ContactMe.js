@@ -1,6 +1,6 @@
 import React , {useState, useEffect} from 'react';
 
-function ContactMe() {
+const ContactMe = () => {
     return (
         <div>
             <h1>Contact Me</h1>

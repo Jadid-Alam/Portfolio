@@ -1,6 +1,6 @@
 import React , {useState, useEffect} from 'react';
 
-function Experience() {
+const Experience = () => {
     return (
         <div>
             <h1>Experience</h1>
