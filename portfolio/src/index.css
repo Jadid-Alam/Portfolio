@@ -21,6 +21,34 @@ code {
   animation: gradient 15s infinite;
 }
 
+.exp-left {
+  text-align: left;
+  grid-column: 1;
+}
+
+.exp-right {
+  text-align: right;
+  grid-column: 2;
+}
+
+.exp-left-gradient {
+  width: 5%;
+  background: linear-gradient(to left, #ffffff, #d1d5db);
+  grid-column: 2;
+}
+
+.exp-right-gradient {
+  justify-self: end;
+  width: 5%;
+  background: linear-gradient(to right, #ffffff, #d1d5db  );
+  grid-column: 1;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (min-width: 1025px) {
 
   main,header,footer {

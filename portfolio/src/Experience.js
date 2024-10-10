@@ -11,6 +11,7 @@ const Experience = () => {
     const [mouse, setMouse] = useState({x:0, y:0});
     const [fading, setFading] = useState({});
     const [darkMode, setDarkMode] = useState(false);
+    const [posts, setPosts] = useState([]);
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
 
@@ -101,6 +102,33 @@ const Experience = () => {
         pointerEvents: 'none',
     };
 
+    /*
+
+    const getData = () => {
+        fetch('http://localhost:8000/api/experience/')
+        .then(res => res.json())
+        .then(data => {
+          const exp = [];
+          data.forEach(d => {
+            exp.push({
+              ...d
+            });
+          });
+            
+    }, []);
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const entries = [];
+
+    for (key in posts) {                             // MAKE SURE IT WORKS FOR DARK MODE
+        entries.push(
+
+        );
+      };
+    */
     const colorString = `rgb(${color.r}, ${color.g}, ${color.b})`;
   return (
       <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
@@ -141,53 +169,45 @@ const Experience = () => {
           </header>
 
           <main>
-              <div className='content text-center text-mnormal md:text-normal'>
-                <div>
-                    <h2 id='title' className={`py-96 p-2 text-mheading md:p-3 md:py-96 md:text-heading 
-                      fade-in duration-1000 ease-in-out ${fading['title'] ? 'opacity-100' : 'opacity-0'} 
-                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>I am <b style={{ color: colorString }}>Jadid Alam</b>, 
-                      an aspiring student pursuing a career in the tech industry.</h2>
-                </div>
-
-                <div className="py-4 md:py-8">
-                      <p id='p1' className={`p-1 py-2 md:p-3 md:py-5
-                          fade-in duration-1000 ease-in-out ${fading['p1'] ? 'opacity-100' : 'opacity-0'}
-                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>What makes people feel content with their lives? Owning expensive cars? Living in a mansion? Neither. 
-                          It's having a sense of purpose, goals to strive for!
-                      </p>
-                    <p id='p2' className={`p-1 py-2 md:p-3 md:py-5
-                          fade-in duration-500 ease-in-out ${fading['p2'] ? 'opacity-100' : 'opacity-0'}
+              <div className='content py-8 text-center text-mnormal md:text-normal md:py-16 split'>
+               
+                <div className="py-4 md:py-8 exp-left">
+                  <h3 id='title1' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                    fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
+                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Job experience 1 htica cawd</h3>
+                  
+                    <p id='sp1' className={`p-1 py-1 md:p-3 md:py-2
+                        fade-in duration-1000 ease-in-out ${fading['sp1'] ? 'opacity-100' : 'opacity-0'}
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>What makes people feel content with their lives? Owning expensive cars? Living in a mansion? Neither. 
+                        It's having a sense of purpose, goals to strive for!
+                    </p>
+                    <p id='bp1' className={`p-1 py-1 md:p-3 md:py-2
+                          fade-in duration-500 ease-in-out ${fading['bp1'] ? 'opacity-100' : 'opacity-0'}
                           ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Therefore, I make it a priority to set clear goals for myself and organize my daily activities to achieve them. 
                         For instance, I focus on completing challenges on LeetCode to enhance my coding skills and improve my acceptance rate.
                     </p>
-                    
-                    <figure id='img' className={`p-1 py-5 md:p-3 md:py-10
-                      fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
-                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <a href='https://leetcode.com/u/ec23119/'><img src={myImage} alt="LeetCode Profile" style={{ width: '1500px', height: 'auto' }} /></a>
-                        <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LeetCode Profile</figcaption>
-                    </figure>
                 </div>
-
-                <div>
-
-                    <h3 id='title1' className={`p-1 py-2 text-mh3 md:text-h3 md:p-3 md:py-4 text-left 
+                <div className='py-4 md:py-8 exp-left-gradient'></div>
+                
+                <div className='py-4 md:py-8 exp-right-gradient'></div>
+                <div className="py-4 md:py-8 exp-right">
+                  <h3 id='title1' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
                     fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
-                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Academic History:</h3>
-
-                    <p id='p3' className={`p-1 py-2 md:p-3 md:py-4 text-left
-                    fade-in duration-1000 ease-in-out ${fading['p3'] ? 'opacity-100' : 'opacity-0'}
-                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>"I am currently studying <b style={{ color: colorString }}>Computer Science</b> at <b style={{ color: colorString }}>Queen Mary University of London</b>, where I am exploring programming languages, data structures, and honing my skills as a programmer. 
-                        My passion for Computer Science began in secondary school, but I initially pursued Engineering due to not taking the subject at GCSE.
+                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Job experience 1 htica cawd</h3>
+                  
+                    <p id='sp1' className={`p-1 py-1 md:p-3 md:py-2
+                        fade-in duration-1000 ease-in-out ${fading['sp1'] ? 'opacity-100' : 'opacity-0'}
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>What makes people feel content with their lives? Owning expensive cars? Living in a mansion? Neither. 
+                        It's having a sense of purpose, goals to strive for!
                     </p>
-
-                    <p id='p4' className={`p-1 py-2 md:p-3 md:py-4 text-left
-                    fade-in duration-1000 ease-in-out ${fading['p4'] ? 'opacity-100' : 'opacity-0'}
-                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        After a year at the <b style={{ color: colorString }}>University of Oxford</b> studing <b style={{ color: colorString }}>Engineering</b>, I realized my true interest lay in Computer Science, prompting my transfer to Queen Mary. Here, I am excited to deepen my technical 
-                        knowledge and gain practical experience, particularly through an individual project in my final year that will allow me to explore my specific interests within the field."
+                    <p id='bp1' className={`p-1 py-1 md:p-3 md:py-2
+                          fade-in duration-500 ease-in-out ${fading['bp1'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Therefore, I make it a priority to set clear goals for myself and organize my daily activities to achieve them. 
+                        For instance, I focus on completing challenges on LeetCode to enhance my coding skills and improve my acceptance rate.
                     </p>
                 </div>
+                
+              
               </div>
           </main>
 
@@ -199,3 +219,4 @@ const Experience = () => {
 };
 
 export default Experience;
+
