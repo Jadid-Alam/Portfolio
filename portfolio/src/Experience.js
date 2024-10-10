@@ -12,6 +12,8 @@ const Experience = () => {
     const [fading, setFading] = useState({});
     const [darkMode, setDarkMode] = useState(false);
     const [posts, setPosts] = useState([]);
+    const [delayedDarkModeLeft, setDelayedDarkModeLeft] = useState('');
+    const [delayedDarkModeRight, setDelayedDarkModeRight] = useState('');
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
 
@@ -102,6 +104,20 @@ const Experience = () => {
         pointerEvents: 'none',
     };
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDelayedDarkModeLeft(darkMode ? 'exp-left-gradient-dark' : 'exp-left-gradient');
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [darkMode]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDelayedDarkModeRight(darkMode ? 'exp-right-gradient-dark' : 'exp-right-gradient');
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [darkMode]);
+
     /*
 
     const getData = () => {
@@ -123,7 +139,7 @@ const Experience = () => {
 
     const entries = [];
 
-    for (key in posts) {                             // MAKE SURE IT WORKS FOR DARK MODE
+    for (key in posts) {                          
         entries.push(
 
         );
@@ -187,9 +203,9 @@ const Experience = () => {
                         For instance, I focus on completing challenges on LeetCode to enhance my coding skills and improve my acceptance rate.
                     </p>
                 </div>
-                <div className='py-4 md:py-8 exp-left-gradient'></div>
+                <div className={`py-4 md:py-8 ${delayedDarkModeLeft}`}></div>
                 
-                <div className='py-4 md:py-8 exp-right-gradient'></div>
+                <div className={`py-4 md:py-8 ${delayedDarkModeRight}`}></div>
                 <div className="py-4 md:py-8 exp-right">
                   <h3 id='title1' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
                     fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
