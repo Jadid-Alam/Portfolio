@@ -38,24 +38,18 @@ code {
 }
 
 .exp-right {
-  text-align: right;
+  text-align: left;
   grid-column: 2;
   border-bottom: #d1d5db 1px solid;
   width: 90%;
 }
 
-.exp-left-dark {
-  text-align: left;
-  grid-column: 1;
-  border-bottom: #9333ea 1px solid;
-  width: 90%;
+.exp-bottom {
+  border-bottom: #d1d5db 1px solid;
 }
 
-.exp-right-dark {
-  text-align: right;
-  grid-column: 2;
+.exp-bottom-dark {
   border-bottom: #9333ea 1px solid;
-  width: 90%;
 }
 
 .exp-left-gradient {

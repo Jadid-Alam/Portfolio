@@ -8,12 +8,11 @@ import { Link } from 'react-router-dom';
 const Experience = () => {
     const [color, setColor] = useState({r:64, g:0, b:140});
     const [inverse, setInverse] = useState(false);
-    const [mouse, setMouse] = useState({x:0, y:0});
     const [fading, setFading] = useState({});
     const [darkMode, setDarkMode] = useState(false);
-    const [posts, setPosts] = useState([]);
     const [delayedDarkModeLeft, setDelayedDarkModeLeft] = useState('');
     const [delayedDarkModeRight, setDelayedDarkModeRight] = useState('');
+    const [borderColor, setBorderColor] = useState('');
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
 
@@ -56,15 +55,6 @@ const Experience = () => {
         return () => clearInterval(interval);
     }, [color.r]);
 
-    /*
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            setMouse({x: e.clientX, y: e.clientY});
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouse.x, mouse.y]);*/
-
     useEffect(() => {
         const elements = document.querySelectorAll('.fade-in');
     
@@ -94,17 +84,6 @@ const Experience = () => {
         };
       }, []);
 
-      /*
-    const fadingCircle = {
-        position: 'fixed',
-        top: mouse.y - 1500,
-        left: mouse.x - 1500,
-        zIndex: 0,
-        width: '3000px',
-        height: '3000px',
-        borderRadius: '50%',
-        pointerEvents: 'none',
-    };*/
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -120,33 +99,14 @@ const Experience = () => {
         return () => clearTimeout(timer);
     }, [darkMode]);
 
-    /*
-
-    const getData = () => {
-        fetch('http://localhost:8000/api/experience/')
-        .then(res => res.json())
-        .then(data => {
-          const exp = [];
-          data.forEach(d => {
-            exp.push({
-              ...d
-            });
-          });
-            
-    }, []);
-
     useEffect(() => {
-        getData();
-    }, []);
+        const timer = setTimeout(() => {
+            setBorderColor(darkMode ? 'exp-bottom-dark' : 'exp-bottom');
+        }, 300);
+        return () => clearTimeout(timer);
+    },  [darkMode]);
 
-    const entries = [];
-
-    for (key in posts) {                          
-        entries.push(
-
-        );
-      };
-    */
+  
     const colorString = `rgb(${color.r}, ${color.g}, ${color.b})`;
   return (
       <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
@@ -189,42 +149,132 @@ const Experience = () => {
           <main>
               <div className='content py-8 text-center text-mnormal md:text-normal md:py-16 z-10'>
                
-               <div className='flex'>
-                <div className="py-4 md:py-8 exp-left">
+               <div id='div1' className={`flex fade-in ${fading['div1'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform -translate-x-full transition-all duration-1000'}`}> 
+                <div className={`py-4 md:py-8 exp-left ${borderColor}`}>
                   <h3 id='title1' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
                     fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
-                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Job experience 1 htica cawd</h3>
+                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Web Developer</h3>
                   
                     <p id='sp1' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
                         fade-in duration-1000 ease-in-out ${fading['sp1'] ? 'opacity-100' : 'opacity-0'}
-                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>What makes people feel content with their lives? Owning expensive cars? Living in a mansion? Neither. 
-                        It's having a sense of purpose, goals to strive for!
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          Over the Summer holidays, I worked as a <b style={{ color: colorString }}>Freelance Web Developer </b>for a company called London Science College.
+                          Where I was responsible for creating a website for the company through Wix Website Builder. I was able to create a website that was both visually
+                           appealing and user-friendly using mainly JavaScript.
                     </p>
                     <p id='bp1' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
                           fade-in duration-500 ease-in-out ${fading['bp1'] ? 'opacity-100' : 'opacity-0'}
-                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Therefore, I make it a priority to set clear goals for myself and organize my daily activities to achieve them. 
-                        For instance, I focus on completing challenges on LeetCode to enhance my coding skills and improve my acceptance rate.
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            I was also was volunteering at London Science College, where I learned how to use <b style={{ color: colorString }}>WordPress</b> to create a website using custom JavaScript and php.
+                             I also learned how to use the plugins to add functionality to the website.
                     </p>
                 </div>
                 <div className={`py-4 md:py-8 ${delayedDarkModeLeft}`}></div>
                </div>
                 
-                <div className='flex'>
+                <div id='div2' className={`flex fade-in ${fading['div2'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform translate-x-full transition-all duration-1000'}`}> 
                   <div className={`py-4 md:py-8 ${delayedDarkModeRight}`}></div>
-                  <div className="py-4 md:py-8 exp-right ">
-                    <h3 id='title1' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
-                      fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
-                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Job experience 1 htica cawd</h3>
+                  <div className={`py-4 md:py-8 exp-right ${borderColor}`}>
+                    <h3 id='title2' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                      fade-in duration-1000 ease-in-out ${fading['title2'] ? 'opacity-100' : 'opacity-0'}
+                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Software Engineer</h3>
                     
-                      <p id='sp1' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
-                          fade-in duration-1000 ease-in-out ${fading['sp1'] ? 'opacity-100' : 'opacity-0'}
-                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>What makes people feel content with their lives? Owning expensive cars? Living in a mansion? Neither. 
-                          It's having a sense of purpose, goals to strive for!
+                      <p id='sp2' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                          fade-in duration-1000 ease-in-out ${fading['sp2'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            Over the Summer holidays, I also worked as a <b style={{ color: colorString }}>Freelance Software Engineer </b>for a company called London Science College.
+                             Where I was responsible for creating an application that allows the company to create customer objects and store them in a database. Then the customer information can be retrieved to make
+                             invoices with ease.
                       </p>
-                      <p id='bp1' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
-                            fade-in duration-500 ease-in-out ${fading['bp1'] ? 'opacity-100' : 'opacity-0'}
-                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Therefore, I make it a priority to set clear goals for myself and organize my daily activities to achieve them. 
-                          For instance, I focus on completing challenges on LeetCode to enhance my coding skills and improve my acceptance rate.
+                      <p id='bp2' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                            fade-in duration-500 ease-in-out ${fading['bp2'] ? 'opacity-100' : 'opacity-0'}
+                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                              Through this experience, I was able to learn how to use <b style={{ color: colorString }}>Java FX</b> and APIs to build pdf files and a dropbox API that send and
+                               load data from dropbox.
+                      </p>
+                  </div>
+                </div>
+
+                <div id='div3' className={`flex fade-in ${fading['div3'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform -translate-x-full transition-all duration-1000'}`}> 
+                <div className={`py-4 md:py-8 exp-left ${borderColor}`}>
+                  <h3 id='title3' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                    fade-in duration-1000 ease-in-out ${fading['title3'] ? 'opacity-100' : 'opacity-0'}
+                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Computer Science Tutor</h3>
+                  
+                    <p id='sp3' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                        fade-in duration-1000 ease-in-out ${fading['sp3'] ? 'opacity-100' : 'opacity-0'}
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          I worked as a summer camp tutor for a month with <b style={{ color: colorString }}>FunTech</b>, Where I was trained to teach Python 
+                          and Unity Game Coder. 
+                    </p>
+                    <p id='bp3' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                          fade-in duration-500 ease-in-out ${fading['bp3'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            During the employment I oversaw teaching course content, following a tight schedule to boost the student's learning ability and setting up tech devices to be ready for teaching. 
+                            This opportunity has developed my organisation skills along with my communication skills through the repeated planning with the team of tutors.
+                    </p>
+                </div>
+                <div className={`py-4 md:py-8 ${delayedDarkModeLeft}`}></div>
+               </div>
+                
+                <div id='div4' className={`flex fade-in ${fading['div4'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform translate-x-full transition-all duration-1000'}`}> 
+                  <div className={`py-4 md:py-8 ${delayedDarkModeRight}`}></div>
+                  <div className={`py-4 md:py-8 exp-right ${borderColor}`}>
+                    <h3 id='title4' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                      fade-in duration-1000 ease-in-out ${fading['title4'] ? 'opacity-100' : 'opacity-0'}
+                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>GCSE Tutor</h3>
+                    
+                      <p id='sp4' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                          fade-in duration-1000 ease-in-out ${fading['sp4'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            I thought GCSE Students on Maths and Physics for more than 2 years with <b style={{ color: colorString }}>London Science College. </b>
+                      </p>
+                      <p id='bp4' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                            fade-in duration-500 ease-in-out ${fading['bp4'] ? 'opacity-100' : 'opacity-0'}
+                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                              This helped develop my communication skills and enhanced my ability to express my ideas and it enhanced my teamworking skills by working with other tutors.
+                      </p>
+                  </div>
+                </div>
+
+                <div id='div5' className={`flex fade-in ${fading['div5'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform -translate-x-full transition-all duration-1000'}`}> 
+                <div className={`py-4 md:py-8 exp-left ${borderColor}`}>
+                  <h3 id='title5' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                    fade-in duration-1000 ease-in-out ${fading['title5'] ? 'opacity-100' : 'opacity-0'}
+                    ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Counter-Service Assistant</h3>
+                  
+                    <p id='sp5' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                        fade-in duration-1000 ease-in-out ${fading['sp5'] ? 'opacity-100' : 'opacity-0'}
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}> I worked in customer service in <b style={{ color: colorString }}>The Co-operative Group</b>, where I interacted with customers
+                        providing excellent service.
+                    </p>
+                    <p id='bp5' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                          fade-in duration-500 ease-in-out ${fading['bp5'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            This role helped me develop my patience and communication skills further, as I had to deal with a variety of customers and their queries.
+                    </p>
+                </div>
+                <div className={`py-4 md:py-8 ${delayedDarkModeLeft}`}></div>
+               </div>
+                
+                <div id='div6' className={`flex fade-in ${fading['div6'] ? 'opacity-100 transform translate-x-0 transition-all duration-1000' : 'opacity-0 transform translate-x-full transition-all duration-1000'}`}> 
+                  <div className={`py-4 md:py-8 ${delayedDarkModeRight}`}></div>
+                  <div className={`py-4 md:py-8 exp-right ${borderColor}`}>
+                    <h3 id='title6' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
+                      fade-in duration-1000 ease-in-out ${fading['title6'] ? 'opacity-100' : 'opacity-0'}
+                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Pharmacy assistant</h3>
+                    
+                      <p id='sp6' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                          fade-in duration-1000 ease-in-out ${fading['sp6'] ? 'opacity-100' : 'opacity-0'}
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            I volunteered at <b style={{ color: colorString }}>Boots Pharmacy</b>, where I was responsible for assisting the pharmacist in inputting precriptions in the NHS system and
+                             providing excellent customer service.
+                      </p>
+                      <p id='bp6' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
+                            fade-in duration-500 ease-in-out ${fading['bp6'] ? 'opacity-100' : 'opacity-0'}
+                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                              I was also responsible for calling customers to inform them that their prescriptions were ready for collection.
+                               This role helped me develop my communication skills and my ability to work in a team.
                       </p>
                   </div>
                 </div>
