@@ -21,14 +21,41 @@ code {
   animation: gradient 15s infinite;
 }
 
+.gradient-dark {
+  background: radial-gradient(circle, #280053, rgba(0,0,0,0), rgba(0,0,0,0)); 
+  animation: gradient 15s infinite;
+}
+
+.w-90 {
+  width: 90%;
+}
+
 .exp-left {
   text-align: left;
   grid-column: 1;
+  border-bottom: #d1d5db 1px solid;
+  width: 90%;
 }
 
 .exp-right {
   text-align: right;
   grid-column: 2;
+  border-bottom: #d1d5db 1px solid;
+  width: 90%;
+}
+
+.exp-left-dark {
+  text-align: left;
+  grid-column: 1;
+  border-bottom: #9333ea 1px solid;
+  width: 90%;
+}
+
+.exp-right-dark {
+  text-align: right;
+  grid-column: 2;
+  border-bottom: #9333ea 1px solid;
+  width: 90%;
 }
 
 .exp-left-gradient {
@@ -48,6 +75,7 @@ code {
   
 }
 
+
 .exp-left-gradient-dark {
   animation: fade-in 5s ease-in-out;
   width: 5%;
@@ -65,11 +93,6 @@ code {
   
 }
 
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .split-h {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -85,6 +108,49 @@ code {
   .content {
     grid-column: 2;
   }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proj-span {
+    grid-column: 1 / span 2;
+    width: 50%;                 
+    animation: expandWidth 2s forwards;  
+  }
+
+  @keyframes expandWidth {
+    0% {
+        width: 50%;  
+    }
+    100% {
+        width: 100%;   
+    }
+
+    from {
+      opacity: 0; 
+    }
+    to {
+        opacity: 1;
+    }
+  }
+
+  .proj-fade {
+      opacity: 0; 
+      animation: projfadeIn 2s forwards; 
+  }
+
+  @keyframes projfadeIn {
+      from {
+          opacity: 0; 
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {

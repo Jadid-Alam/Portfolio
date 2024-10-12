@@ -95,7 +95,7 @@ const Home = () => {
         position: 'fixed',
         top: mouse.y - 1500,
         left: mouse.x - 1500,
-        zIndex: -1,
+        zIndex: 0,
         width: '3000px',
         height: '3000px',
         borderRadius: '50%',
@@ -106,9 +106,9 @@ const Home = () => {
   return (
       <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
 
-        <div className='gradient' style={fadingCircle}></div>
+        <div className={`${darkMode ? 'gradient-dark' : 'gradient'}`} style={fadingCircle}></div>
 
-          <header className={`fixed top-0 left-0 w-full text-mnav font-semibold md:text-nav colour md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
+          <header className={`fixed z-20 top-0 left-0 w-full text-mnav font-semibold md:text-nav md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
                 <h4 className="p-1 max-w-40 md:p-2" style={{ color: colorString }}>Jadid Alam</h4>
                   <nav className="mr-auto">
                     <ul className="flex">
@@ -143,7 +143,7 @@ const Home = () => {
             </header>
 
             <main>
-                <div className='content text-center text-mnormal md:text-normal'>
+                <div className='content z-10 text-center text-mnormal md:text-normal'>
                   <div>
                       <h2 id='title' className={`py-96 p-2 text-mheading md:p-3 md:py-96 md:text-heading 
                         fade-in duration-1000 ease-in-out ${fading['title'] ? 'opacity-100' : 'opacity-0'} 
@@ -164,8 +164,7 @@ const Home = () => {
                       </p>
                       
                       <figure id='img' className={`p-1 py-5 md:p-3 md:py-10
-                        fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
-                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                        fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                             <a href='https://leetcode.com/u/ec23119/'><img src={myImage} alt="LeetCode Profile" style={{ width: '1500px', height: 'auto' }} /></a>
                           <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LeetCode Profile</figcaption>
                       </figure>
@@ -194,7 +193,7 @@ const Home = () => {
             </main>
 
             <footer>
-                <h6 className='content mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+                <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
             </footer>
       </div>
   );

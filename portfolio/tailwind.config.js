@@ -16,6 +16,7 @@ module.exports = {
         'mimgcap': '0.5rem',
         'h3' : '2rem',
         'mh3': '1.5rem',
+        'none': '0rem',
       },
     },
   },

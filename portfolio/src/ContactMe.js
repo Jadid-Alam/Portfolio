@@ -98,7 +98,7 @@ const ContactMe = () => {
         position: 'fixed',
         top: mouse.y - 1500,
         left: mouse.x - 1500,
-        zIndex: -1,
+        zIndex: 0,
         width: '3000px',
         height: '3000px',
         borderRadius: '50%',
@@ -107,9 +107,9 @@ const ContactMe = () => {
 
     const colorString = `rgb(${color.r}, ${color.g}, ${color.b})`;
   return (
-      <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
-        <div className='gradient' style={fadingCircle}></div>
-        <header className={`fixed top-0 left-0 w-full text-mnav font-semibold md:text-nav colour md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
+      <div className={` fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
+        <div className={`${darkMode ? 'gradient-dark' : 'gradient'}`} style={fadingCircle}></div>
+        <header className={`fixed z-20 top-0 left-0 w-full text-mnav font-semibold md:text-nav md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
               <h4 className="p-1 max-w-40 md:p-2" style={{ color: colorString }}>Jadid Alam</h4>
                 <nav className="mr-auto">
                   <ul className="flex">
@@ -139,48 +139,51 @@ const ContactMe = () => {
                       hover:translate-y-1 hover:transform hover:transition ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
                         <Link to='/contact-me'>Contact Me</Link>
                       </li>
-                      <button onClick={toggleDarkMode}><img src={darkMode ? lightModeImage : darkModeImage} style={{ width: '35px', height: 'auto' }} /></button>
+                      <button onClick={toggleDarkMode}><img  src={darkMode ? lightModeImage : darkModeImage} style={{ width: '35px', height: 'auto' }} alt='DarkMode button' /></button>
                       
                   </ul>
                 </nav>
           </header>
 
           <main>
-              <div className='content text-center text-mnormal md:text-normal split'>
+              <div className='content text-center text-mnormal md:text-normal split z-10'> 
                 <div>
-                    <h2 id='title' className={`py-40 p-2 text-mheading md:p-3 md:py-64 md:text-heading 
-                      fade-in duration-1000 ease-in-out ${fading['title'] ? 'opacity-100' : 'opacity-0'} 
+                    <h2 id='title' className={`py-20 p-2 text-mheading md:p-3 md:py-64 md:text-heading 
+                      fade-in duration-1000 ease-in-out ${fading['title'] || 1==1 ? 'opacity-100' : 'opacity-0'} 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Interested in <b style={{color: colorString}}>collaborating</b> or have any inquiries? Feel free to <b style={{color: colorString}}>reach out</b>.</h2>
                 </div>
 
-                <div className="py-40 md:py-40 grid grid-cols-2 grid-rows-2">
+                <div className="pb-16 md:py-40 grid grid-cols-2 grid-rows-2">
                     
                     <figure id='gmail' className={`p-5 py-4 md:p-10 md:py-5
-                      fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
+                      fade-in duration-1000 ease-in-out 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <a href='mailto:jadid.alam.08@gmail.com'><img src={gmailImage} alt="Email: jadid.alam.08@gmail.com" style={{ width: '200px', height: 'auto' }} /></a>
-                        <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>Email: jadid.alam.08@gmail.com</figcaption>
+                          <a id='gmail-link' href='mailto:jadid.alam.08@gmail.com'>
+                            <img id='gmail-img' src={require('./images/gmail.png')} 
+                            alt="Email: jadid.alam.08@gmail.com" style={{ width: '200px', height: 'auto' }} />
+                          </a>
+                        <figcaption id='gmail-cap' className='text-mimgcap md:text-imgcap text-gray-500'>Email: jadid.alam.08@gmail.com</figcaption>
                     </figure>
 
                     <figure id='github' className={`p-5 py-4 md:p-10 md:py-5
-                      fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
+                      fade-in duration-1000 ease-in-out 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           <a href='https://github.com/Jadid-Alam?tab=repositories'><img src={githubImage} alt="My GitHub repository" style={{ width: '200px', height: 'auto' }} /></a>
-                        <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>My GitHub repository</figcaption>
+                        <figcaption className='text-mimgcap md:text-imgcap text-gray-500'>My GitHub repository</figcaption>
                     </figure>
 
                     <figure id='linkedin' className={`p-5 py-4 md:p-10 md:py-5
-                      fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
+                      fade-in duration-1000 ease-in-out 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           <a href='https://www.linkedin.com/in/jadid-alam-b57a112a5/'><img src={linkedinImage} alt="My Linked-in Profile" style={{ width: '200px', height: 'auto' }} /></a>
-                        <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>My Linked-in Profile</figcaption>
+                        <figcaption className='text-mimgcap md:text-imgcap text-gray-500'>My Linked-in Profile</figcaption>
                     </figure>
 
                     <figure id='phone' className={`p-5 py-4 md:p-10 md:py-5
-                      fade-in duration-1000 ease-in-out ${fading['img'] ? 'opacity-100' : 'opacity-0'}
+                      fade-in duration-1000 ease-in-out 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           <a href='tel:+447491277476'><img src={phoneImage} alt="Phone: +447491277476" style={{ width: '200px', height: 'auto' }} /></a>
-                        <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>Phone: +447491277476</figcaption>
+                        <figcaption className='text-mimgcap md:text-imgcap text-gray-500'>Phone: +447491277476</figcaption>
                     </figure>
                 </div>
 
@@ -188,7 +191,7 @@ const ContactMe = () => {
           </main>
 
           <footer>
-              <h6 className='content mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+              <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
           </footer>
       </div>
   );
