@@ -17,6 +17,7 @@ module.exports = {
         'h3' : '2rem',
         'mh3': '1.5rem',
         'none': '0rem',
+        'small': '0.75rem',
       },
     },
   },

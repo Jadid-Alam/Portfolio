@@ -171,8 +171,12 @@ const Projects = () => {
             </header>
 
             <main>
-                <div className='content z-10 pt-14 md:pt-28 text-center text-mnormal md:text-normal split'>
-                  <button id='b1' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b1'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                <div className='content z-10 pt-14 md:pt-28 text-center text-mnormal md:text-normal split transform transition-all duration-500'>
+                  <button id='b1' className={`toggle pb-10 md:pb-16 z-10 duration-500 ease-in-out transform transition-all rounded-sm
+                  ${clicked['b1'] ? 'proj-span split' : 'proj-fade' }
+                  ${darkMode ? ' border-gray-950 ' : ' border-yellow-50 '}
+                  ${darkMode ? 'hover:border-purple-900 hover:border ' : 'hover:border hover:border-purple-300'}
+                  `} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title1' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
@@ -184,6 +188,13 @@ const Projects = () => {
                           This personal project is a <b style={{ color: colorString }}>full-stack portfolio</b> that showcases my resume, skills, 
                           experience and my Dynamic Web Development Skills. Including a mini-blog of my professional journey.
                         </p>
+
+                        <small id='small1' className={`text-small
+                          fade-in duration-1000 ease-in-out ${fading['small1'] ? 'opacity-100' : 'opacity-0'}
+                          ${clicked['b1'] ? 'hidden' : '' }
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          Click to View More Detail
+                        </small>
                       </div>
                       
                       <figure id='img' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b1'] ? 'block' : 'hidden' }
@@ -209,7 +220,11 @@ const Projects = () => {
                       </p>
                   </button>
 
-                  <button id='b2' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b2'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b2' className={`toggle pb-10 md:pb-16 z-10 transform transition-all rounded-sm
+                  ${clicked['b2'] ? 'proj-span split' : 'proj-fade' }
+                  ${darkMode ? ' border-gray-950 ' : ' border-yellow-50 '}
+                  ${darkMode ? 'hover:border-purple-900 hover:border ' : 'hover:border hover:border-purple-300'}
+                  `} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title2' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title2'] ? 'opacity-100' : 'opacity-0'}
@@ -221,6 +236,12 @@ const Projects = () => {
                           This is a <b style={{ color: colorString }}>Commissioned Project </b>that I developed for a client. The project is a <b style={{ color: colorString }}>Invoice Builder </b> 
                           that allows the user to create invoices for their customer, that can be added to the system, with minimal effort. 
                         </p>
+                        <small id='small2' className={`text-small
+                          fade-in duration-1000 ease-in-out ${fading['small2'] ? 'opacity-100' : 'opacity-0'}
+                          ${clicked['b2'] ? 'hidden' : '' }
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          Click to View More Detail
+                        </small>
                       </div>
                       
                       <figure id='img2' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b2'] ? 'block' : 'hidden' }
@@ -244,7 +265,11 @@ const Projects = () => {
                       </p>
                   </button>
 
-                  <button id='b3' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b3'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b3' className={`toggle pb-10 md:pb-16 z-10 transform transition-all rounded-sm
+                  ${clicked['b3'] ? 'proj-span split' : 'proj-fade' }
+                  ${darkMode ? ' border-gray-950 ' : ' border-yellow-50 '}
+                  ${darkMode ? 'hover:border-purple-900 hover:border ' : 'hover:border hover:border-purple-300'}
+                  `} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title3' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title3'] ? 'opacity-100' : 'opacity-0'}
@@ -256,6 +281,13 @@ const Projects = () => {
                           This is an individual project that I developed, where I developed a Horse racing simulator that allows users to bet on horses and watch the horses
                            race with a winner being declared at the end.
                         </p>
+
+                        <small id='small3' className={`text-small
+                          fade-in duration-1000 ease-in-out ${fading['small3'] ? 'opacity-100' : 'opacity-0'}
+                          ${clicked['b3'] ? 'hidden' : '' }
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          Click to View More Detail
+                        </small>
                       </div>
                       
                       <figure id='img3' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b3'] ? 'block' : 'hidden' }
@@ -280,7 +312,11 @@ const Projects = () => {
                       </p>
                   </button>
 
-                  <button id='b4' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b4'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b4' className={`toggle pb-10 md:pb-16 z-10 transform transition-all rounded-sm
+                  ${clicked['b4'] ? 'proj-span split' : 'proj-fade' }
+                  ${darkMode ? ' border-gray-950 ' : ' border-yellow-50 '}
+                  ${darkMode ? 'hover:border-purple-900 hover:border ' : 'hover:border hover:border-purple-300'}
+                  `} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title4' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title4'] ? 'opacity-100' : 'opacity-0'}
@@ -292,6 +328,13 @@ const Projects = () => {
                           I was <b style={{ color: colorString }}>Commissioned </b> to make a Homework Portal Website for a client that allows teachers to assign homework to students
                            and it allows the students to view their homework through the portal.
                         </p>
+
+                        <small id='small4' className={`text-small
+                          fade-in duration-1000 ease-in-out ${fading['small4'] ? 'opacity-100' : 'opacity-0'}
+                          ${clicked['b4'] ? 'hidden' : '' }
+                          ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                          Click to View More Detail
+                        </small>
                       </div>
                       
                       <figure id='img4' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b4'] ? 'block' : 'hidden' }

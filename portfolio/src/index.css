@@ -92,6 +92,21 @@ code {
   grid-template-rows: 1fr 1fr;
 }
 
+.blog-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.proj-border {
+  border: #e9d5ff 1px solid;
+  border-radius: 2px;
+}
+
+.proj-border-dark {
+  border: #581c87 1px solid;
+  border-radius: 2px;
+}
+
 @media (min-width: 1025px) {
 
   main,header,footer {
