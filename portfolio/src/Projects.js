@@ -4,6 +4,9 @@ import darkModeImage from './images/night-mode.png';
 import lightModeImage from './images/day-mode.png';
 import { Link } from 'react-router-dom';
 import portfolioImage from './images/portfolioImage.PNG';
+import invoiceGif from './images/InoviceBuilderProjectGif.gif';
+import horseGif from './images/HorseRacingGif.gif';
+import hwPortal from './images/hwPortalGif.gif';
 
 const Projects = () => {
 
@@ -168,8 +171,8 @@ const Projects = () => {
             </header>
 
             <main>
-                <div className='content z-10 text-center text-mnormal md:text-normal split pt-10'>
-                  <button id='b1' className={`toggle z-10 ${clicked['b1'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                <div className='content z-10 pt-14 md:pt-28 text-center text-mnormal md:text-normal split'>
+                  <button id='b1' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b1'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title1' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title1'] ? 'opacity-100' : 'opacity-0'}
@@ -179,7 +182,7 @@ const Projects = () => {
                           fade-in duration-1000 ease-in-out ${fading['descipton1'] ? 'opacity-100' : 'opacity-0'}
                           ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           This personal project is a <b style={{ color: colorString }}>full-stack portfolio</b> that showcases my resume, skills, 
-                          experience and my Dynamic Web Development Skills. Including a mini-blog of my porfessional journey.
+                          experience and my Dynamic Web Development Skills. Including a mini-blog of my professional journey.
                         </p>
                       </div>
                       
@@ -194,7 +197,7 @@ const Projects = () => {
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                         This project was developed using <b style={{ color: colorString }}>React JS, Tailwind CSS, Django </b> and <b style={{ color: colorString }}>MongoDB </b> 
                          and is hosted on <b style={{ color: colorString }}>Vercel</b>. I made use of reacts hooks to manage states and cause effects such as the dark mode toggle,
-                         elements fading in and dynamic color changing elements.
+                         elements fading in and dynamic colour changing elements.
                       </p>
 
                       <p id='p2' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b1'] ? 'block' : 'hidden' }
@@ -202,43 +205,46 @@ const Projects = () => {
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                         Throughout the development of this project, I learned how to make efficient <b style={{ color: colorString }}> Dynamic Web Apps </b>
                          that allows the user to navigate between different pages without having to reload the page with the use of <b style={{ color: colorString }}>Router </b>
-                         module from React. I also learned how to Implement <b style={{ color: colorString }}>Django </b> and how react and django can communicate with each other.
+                         module from React. I also learned how to Implement <b style={{ color: colorString }}>Django </b> and how React and Django can communicate with each other.
                       </p>
                   </button>
 
-                  <button id='b2' className={`toggle z-10 ${clicked['b2'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b2' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b2'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title2' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title2'] ? 'opacity-100' : 'opacity-0'}
-                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>LSC Invoice Builder (Commissioned) </h3>
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>LSC Invoice Builder</h3>
 
                         <p id='descipton2' className={`p-1 py-2 md:p-3 md:py-4 text-left
                           fade-in duration-1000 ease-in-out ${fading['descipton2'] ? 'opacity-100' : 'opacity-0'}
                           ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <b style={{ color: colorString }}>short descipton</b>
+                          This is a <b style={{ color: colorString }}>Commissioned Project </b>that I developed for a client. The project is a <b style={{ color: colorString }}>Invoice Builder </b> 
+                          that allows the user to create invoices for their customer, that can be added to the system, with minimal effort. 
                         </p>
                       </div>
                       
                       <figure id='img2' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b2'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <img src={portfolioImage} alt="LeetCode Profile" style={{ width: '500px', height: 'auto' }} />
-                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LeetCode Profile</figcaption>
+                          <img src={invoiceGif} alt="Invoice builder gif" style={{ width: '500px', height: 'auto' }} />
+                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>Invoice builder</figcaption>
                       </figure>
 
                       <p id='p3' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b2'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p3'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>roles and technology used</b>
+                          This project was developed using <b style={{ color: colorString }}>Java Fx </b> and APIs such as <b style={{ color: colorString }}>iText </b>and 
+                          <b style={{ color: colorString }}> Dropbox API </b>to generate PDFs and store the data in a connected Dropbox account.
                       </p>
 
                       <p id='p4' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b2'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p4'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>short descipton</b>
+                        During the development of this project, I have learned the importance of using compatible development kits and runtime environments to avoid issues during launch. 
+                        I also learned how to use APIs to interact with other services and how to use Java Fx to create a user-friendly interface.
                       </p>
                   </button>
 
-                  <button id='b3' className={`toggle z-10 ${clicked['b3'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b3' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b3'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title3' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title3'] ? 'opacity-100' : 'opacity-0'}
@@ -247,58 +253,67 @@ const Projects = () => {
                         <p id='descipton3' className={`p-1 py-2 md:p-3 md:py-4 text-left
                           fade-in duration-1000 ease-in-out ${fading['descipton3'] ? 'opacity-100' : 'opacity-0'}
                           ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <b style={{ color: colorString }}>short descipton</b>
+                          This is an individual project that I developed, where I developed a Horse racing simulator that allows users to bet on horses and watch the horses
+                           race with a winner being declared at the end.
                         </p>
                       </div>
                       
                       <figure id='img3' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b3'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <img src={portfolioImage} alt="LeetCode Profile" style={{ width: '500px', height: 'auto' }} />
-                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LeetCode Profile</figcaption>
+                          <img src={horseGif} alt="Horse Racing Simulator" style={{ width: '500px', height: 'auto' }} />
+                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>Horse Racing Simulator</figcaption>
                       </figure>
 
                       <p id='p5' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b3'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p5'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>roles and technology used</b>
+                        This project was developed using <b style={{ color: colorString }}>Java's Swing</b> library. I have used object-oriented programming to create
+                         classes for horses, interface, betting system etc. I have also used a controller class to manage the interactions between different classes,
+                         Which allowed me to avoid code duplication and make the code more readable and maintainable.
                       </p>
 
                       <p id='p6' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b3'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p6'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>short descipton</b>
+                        This project has taught me the importance of using object-oriented programming to create reusable classes and methods. I have also learned how vital a
+                         controller class is in large projects. I have also learned how to use Java's Swing library to create a user-friendly interfaces.
                       </p>
                   </button>
 
-                  <button id='b4' className={`toggle z-10 ${clicked['b4'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
+                  <button id='b4' className={`toggle pb-10 md:pb-16 z-10 ${clicked['b4'] ? 'proj-span split' : 'proj-fade' }`} onClick={toggleClick}>
                       <div className={`z-10`}>
                         <h3 id='title4' className={`p-1 pt-10 text-mh3 md:text-h3 md:p-3 md:pt-16 text-left 
                         fade-in duration-1000 ease-in-out ${fading['title4'] ? 'opacity-100' : 'opacity-0'}
-                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>LSC Homework Portal (Commissioned)</h3>
+                        ${darkMode ? 'text-yellow-100' : 'text-black'}`}>LSC Homework Portal</h3>
 
                         <p id='descipton4' className={`p-1 py-2 md:p-3 md:py-4 text-left
                           fade-in duration-1000 ease-in-out ${fading['descipton4'] ? 'opacity-100' : 'opacity-0'}
                           ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <b style={{ color: colorString }}>short descipton</b>
+                          I was <b style={{ color: colorString }}>Commissioned </b> to make a Homework Portal Website for a client that allows teachers to assign homework to students
+                           and it allows the students to view their homework through the portal.
                         </p>
                       </div>
                       
                       <figure id='img4' className={`p-1 py-5 md:p-3 md:py-10 z-10 ${clicked['b4'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                          <img src={portfolioImage} alt="LeetCode Profile" style={{ width: '500px', height: 'auto' }} />
-                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LeetCode Profile</figcaption>
+                          <img src={hwPortal} alt="LSC Homework Portal" style={{ width: '500px', height: 'auto' }} />
+                          <figcaption className='text-mimgcap md:text-imgcap text-gray-600'>LSC Homework Portal</figcaption>
                       </figure>
 
                       <p id='p7' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b4'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p7'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>roles and technology used</b>
+                        This project was developed using Wix Website builder. The design was made using Wix's drag and drop feature and the functionality was implemented using
+                         JavaScript and Wix's APIs. The website was hosted on Wix's servers and Wix's database was used to store the data. Although Wix website builder is very
+                         restrictive it is a helpful tool for people who do not have a lot of experience in web development.
                       </p>
 
                       <p id='p8' className={`p-1 py-2 md:p-3 md:py-4 text-left z-10 ${clicked['b4'] ? 'block' : 'hidden' }
                         fade-in duration-1000 ease-in-out ${fading['p8'] ? 'opacity-100' : 'opacity-0'}
                         ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <b style={{ color: colorString }}>short descipton</b>
+                        During the development of this project, I have learned how important documentation is to programmers because when I was developing this project, I had to
+                         use Wix's documentation to understand how to use their APIs, however the Wix documentation was outdated, meaning I had to use various online sources to
+                         understand each API and how to use them.
                       </p>
                   </button>       
 
@@ -306,7 +321,7 @@ const Projects = () => {
             </main>
 
             <footer>
-                <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+                <h6 className={`content z-10 mt-16 mb-2 text-center md:mt-44 md:mb-4 ${darkMode ? 'text-yellow-100' : 'text-black'}`}>&copy; 2024 Jadid Alam. All rights reserved.</h6>
             </footer>
       </div>
   );

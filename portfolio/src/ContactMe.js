@@ -159,7 +159,7 @@ const ContactMe = () => {
                       fade-in duration-1000 ease-in-out 
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           <a id='gmail-link' href='mailto:jadid.alam.08@gmail.com'>
-                            <img id='gmail-img' src={require('./images/gmail.png')} 
+                            <img id='gmail-img' src={gmailImage} 
                             alt="Email: jadid.alam.08@gmail.com" style={{ width: '200px', height: 'auto' }} />
                           </a>
                         <figcaption id='gmail-cap' className='text-mimgcap md:text-imgcap text-gray-500'>Email: jadid.alam.08@gmail.com</figcaption>
@@ -191,7 +191,7 @@ const ContactMe = () => {
           </main>
 
           <footer>
-              <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+                <h6 className={`content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4 ${darkMode ? 'text-yellow-100' : 'text-black'}`}>&copy; 2024 Jadid Alam. All rights reserved.</h6>
           </footer>
       </div>
   );

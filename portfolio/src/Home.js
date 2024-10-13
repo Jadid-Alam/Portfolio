@@ -178,7 +178,7 @@ const Home = () => {
 
                       <p id='p3' className={`p-1 py-2 md:p-3 md:py-4 text-left
                       fade-in duration-1000 ease-in-out ${fading['p3'] ? 'opacity-100' : 'opacity-0'}
-                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>"I am currently studying <b style={{ color: colorString }}>Computer Science</b> at <b style={{ color: colorString }}>Queen Mary University of London</b>, where I am exploring programming languages, data structures, and honing my skills as a programmer. 
+                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>I am currently studying <b style={{ color: colorString }}>Computer Science</b> at <b style={{ color: colorString }}>Queen Mary University of London</b>, where I am exploring programming languages, data structures, and honing my skills as a programmer. 
                           My passion for Computer Science began in secondary school, but I initially pursued Engineering due to not taking the subject at GCSE.
                       </p>
 
@@ -186,14 +186,14 @@ const Home = () => {
                       fade-in duration-1000 ease-in-out ${fading['p4'] ? 'opacity-100' : 'opacity-0'}
                       ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
                           After a year at the <b style={{ color: colorString }}>University of Oxford</b> studing <b style={{ color: colorString }}>Engineering</b>, I realized my true interest lay in Computer Science, prompting my transfer to Queen Mary. Here, I am excited to deepen my technical 
-                          knowledge and gain practical experience, particularly through an individual project in my final year that will allow me to explore my specific interests within the field."
+                          knowledge and gain practical experience, particularly through an individual project in my final year that will allow me to explore my specific interests within the field.
                       </p>
                   </div>
                 </div>
             </main>
 
             <footer>
-                <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+                <h6 className={`content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4 ${darkMode ? 'text-yellow-100' : 'text-black'}`}>&copy; 2024 Jadid Alam. All rights reserved.</h6>
             </footer>
       </div>
   );

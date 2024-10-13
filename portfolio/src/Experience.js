@@ -262,7 +262,7 @@ const Experience = () => {
                   <div className={`py-4 md:py-8 exp-right ${borderColor}`}>
                     <h3 id='title6' className={`p-1 py-1 text-mh3 md:text-h3 md:p-3 md:py-2 
                       fade-in duration-1000 ease-in-out ${fading['title6'] ? 'opacity-100' : 'opacity-0'}
-                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Pharmacy assistant</h3>
+                      ${darkMode ? 'text-yellow-100' : 'text-black'}`}>Pharmacy Assistant</h3>
                     
                       <p id='sp6' className={`p-1 py-1 md:p-3 md:py-2 text-mnormal md:text-normal
                           fade-in duration-1000 ease-in-out ${fading['sp6'] ? 'opacity-100' : 'opacity-0'}
@@ -282,7 +282,7 @@ const Experience = () => {
           </main>
 
           <footer>
-              <h6 className='content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4'>&copy; 2024 Jadid Alam. All rights reserved.</h6>
+                <h6 className={`content z-10 mt-8 mb-2 text-center md:mt-16 md:mb-4 ${darkMode ? 'text-yellow-100' : 'text-black'}`}>&copy; 2024 Jadid Alam. All rights reserved.</h6>
           </footer>
       </div>
   );
