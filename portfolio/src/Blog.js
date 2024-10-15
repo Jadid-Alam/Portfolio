@@ -1,9 +1,9 @@
 import './index.css';
 import React , {useState, useEffect} from 'react';
-import myImage from './images/LeetcodeProfile.PNG';
 import darkModeImage from './images/night-mode.png';
 import lightModeImage from './images/day-mode.png';
 import { Link } from 'react-router-dom';
+import sendIcon from './images/send.png';
 
 const Blog = () => {
 
@@ -12,18 +12,13 @@ const Blog = () => {
     const [mouse, setMouse] = useState({x:0, y:0});
     const [fading, setFading] = useState({});
     const [darkMode, setDarkMode] = useState(false);
+    const [posts, setPosts] = useState([]);
+    const [comments, setComments] = useState([]);
+    const [reload, setReload] = useState(false);
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
 
-    const toggleDarkMode = () => {
-        if (darkMode) {
-            setDarkMode(false);
-        }
-        else
-        {
-            setDarkMode(true);
-        }
-    };
+    const toggleDarkMode = () => {setDarkMode(!darkMode);};
     
     const changeColor = () => {
         setColor((color) => {
@@ -62,34 +57,7 @@ const Blog = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [mouse.x, mouse.y]);
 
-    useEffect(() => {
-        const elements = document.querySelectorAll('.fade-in');
     
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setFading((prevState) => ({
-                  ...prevState,
-                  [entry.target.id]: true,
-                }));
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-    
-        elements.forEach((element) => {
-          observer.observe(element);
-        });
-    
-        return () => {
-          elements.forEach((element) => {
-            observer.unobserve(element);
-          });
-        };
-      }, []);
 
     const fadingCircle = {
         position: 'fixed',
@@ -103,12 +71,111 @@ const Blog = () => {
     };
 
     const colorString = `rgb(${color.r}, ${color.g}, ${color.b})`;
+
+    const handleSubmit = async (e) => {
+      e.preventDefault(); 
+  
+      const formData = new FormData();
+      const postId = e.target.id;
+
+      formData.append('comment', e.target[0].value);
+      e.target[0].value = '';
+      try {
+        const response = await fetch(`http://localhost:8000/api/blog/comment/${postId}/`, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                  'Accept': 'application/json',
+              },
+          });
+  
+          if (!response.ok) {
+              throw new Error('Error adding post' + response.statusText);
+          }
+  
+          const data = await response.json();
+          console.log(data);  
+      } catch (error) {
+          console.error(error);  
+      }
+      setReload(!reload);
+    };
+
+    
+
+  useEffect(() => {
+    setReload(!reload);
+  }, []);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+          const response = await fetch('http://localhost:8000/api/blog/comments/');
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          
+          setComments(data.data);
+      } catch (error) {
+          console.error("Error fetching posts: ", error);
+      }
+    };
+
+    fetchComments();
+    const fetchPosts = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/api/blog/');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            
+            setPosts(data.data);
+        } catch (error) {
+            console.error("Error fetching posts: ", error);
+        }
+    };
+
+    fetchPosts();
+  }, [reload]);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setFading((prevState) => ({
+              ...prevState,
+              [entry.target.id]: true,
+            }));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach((element) => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+
+
   return (
       <div className={`fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}> 
 
         <div className={`${darkMode ? 'gradient-dark' : 'gradient'}`} style={fadingCircle}></div>
 
-          <header className={`fixed z-20 top-0 left-0 w-full text-mnav font-semibold md:text-nav md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
+          <header className={`fixed z-30 top-0 left-0 w-full text-mnav font-semibold md:text-nav md:font-semibold fade-in duration-1000 ease-in-out ${darkMode ? 'bg-gray-950' : 'bg-yellow-50'}`}>
                 <h4 className="p-1 max-w-40 md:p-2" style={{ color: colorString }}>Jadid Alam</h4>
                   <nav className="mr-auto">
                     <ul className="flex">
@@ -144,58 +211,40 @@ const Blog = () => {
 
             <main>
                 <div className='content z-10 text-center text-mnormal md:text-normal'>
-                  <div className='pt-20 md:pt-40 blog-grid'>
-                    <div className={`border-r border-b rounded-sm duration-1000 ease-in-out ${darkMode ? 'border-purple-900' : 'border-purple-300'}`}>
-                        <figure id='img' className={`p-1 pt-5 pb-2 md:p-3 md:pt-10 md:pb-3
-                        fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <img className='ml-auto'  src={myImage} alt="LeetCode Profile" style={{ width: 'auto', height: '500px' }} />
-                        <figcaption className='text-mimgcap md:text-imgcap text-right text-gray-600'>Date and Time</figcaption>
-                      </figure>
-                      <p id='p1' className={`p-1 pt-1 pb-3 md:p-3 md:pt-2 md:pb-6
-                            fade-in duration-1000 ease-in-out ${fading['p1'] ? 'opacity-100' : 'opacity-0'}
-                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                            Photo comment: this is this and athadwa
-                      </p>
-                    </div>
-                    <div className='grid grid-rows-[9fr_1fr]'>
-                        <div id='comments2' className={`p-1 text-mnav md:text-nav md:p-3 text-left fade-in duration-1000 ease-in-out ${fading['comments2'] ? 'opacity-100' : 'opacity-0'}
-                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                            <p className='pb-1'>comment1</p>
-                            <p className='pb-1'>comment2</p>
-                        </div>
-                        <form className='p-1'>
-                            <input id='commentInp1' type='text' placeholder='Comment' className={`text-mnav md:text-nav p-1 w-[95%] mx-auto
-                                border-b rounded-sm ${darkMode ? 'bg-gray-900 border-purple-900 text-yellow-100' : 'bg-gray-200 border-purple-300 text-black'}`} />
-                        </form>
-                    </div>
-                  </div>
+                  {Array.isArray(posts) && posts.length > 0 ? (
+                    posts.map((post) => (
 
-                  <div className='pt-20 md:pt-40 blog-grid'>
-                    <div className={`border-r border-b rounded-sm duration-1000 ease-in-out ${darkMode ? 'border-purple-900' : 'border-purple-300'}`}>
-                        <figure id='img2' className={`p-1 pt-5 pb-2 md:p-3 md:pt-10 md:pb-3
-                        fade-in duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                        <img className='ml-auto'  src={myImage} alt="LeetCode Profile" style={{ width: 'auto', height: '500px' }} />
-                        <figcaption className='text-mimgcap md:text-imgcap text-right text-gray-600'>Date and Time</figcaption>
-                      </figure>
-                      <p id='p2' className={`p-1 pt-1 pb-3 md:p-3 md:pt-2 md:pb-6
-                            fade-in duration-1000 ease-in-out ${fading['p2'] ? 'opacity-100' : 'opacity-0'}
-                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                            Photo comment: this is this and athadwa
-                      </p>
-                    </div>
-                    <div className='grid grid-rows-[9fr_1fr]'>
-                        <div id='comments' className={`p-1 text-mnav md:text-nav md:p-3 text-left fade-in duration-1000 ease-in-out ${fading['comments'] ? 'opacity-100' : 'opacity-0'}
-                            ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
-                            <p className='pb-1'>comment1</p>
-                            <p className='pb-1'>comment2</p>
+                      <div key={post.post_id} className='pt-20 md:pt-40 blog-grid'>
+                        <div className={`border-r border-b rounded-sm duration-1000 ease-in-out ${darkMode ? 'border-purple-900' : 'border-purple-300'}`}>
+                            <figure id={`img${post.post_id}`} alt='posted image' className={`p-1 pt-5 pb-2 md:p-3 md:pt-10 md:pb-3
+                            proj-fade duration-1000 ease-in-out ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                            <img className='ml-auto'  src={post.image} style={{ width: 'auto', height: '500px' }} />
+                            <figcaption className='text-mimgcap md:text-imgcap text-right text-gray-600'>{post.date}</figcaption>
+                          </figure>
+                          <p id={`p${post.post_id}`} className={`p-1 pt-1 pb-3 md:p-3 md:pt-2 md:pb-6
+                                duration-1000 ease-in-out proj-fade
+                                ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                                {post.caption}
+                          </p>
                         </div>
-                        <form className='p-1'>
-                            <input id='commentInp2' type='text' placeholder='Comment' className={`text-mnav md:text-nav p-1 w-[95%] mx-auto
-                                border-b rounded-sm ${darkMode ? 'bg-gray-900 border-purple-900 text-yellow-100' : 'bg-gray-200 border-purple-300 text-black'}`} />
-                        </form>
+                        <div className='grid grid-rows-[9fr_1fr]'>
+                            <div id={`c${post.post_id}`} className={`p-1 text-mnav md:text-nav md:p-3 text-left fade-in duration-1000 ease-in-out z-10 overflow-y-auto max-h-[600px]
+                            proj-fade ${darkMode ? 'text-yellow-100' : 'text-black'}`}>
+                                  {comments.filter(comment => comment.post_id === post.post_id).map((comment,index) => (
+                                    <p key={index} className='pb-1 z-20'>{comment.comment}</p>
+                                  )) || <p>No comments available.</p>}
+                            </div>
+                            <form id={post.post_id} className='p-1 flex' onSubmit={handleSubmit}>
+                                <input id={`i${post.post_id}`} type='text' placeholder='Comment' className={`text-mnav md:text-nav p-1 w-[85%] m-auto h-[70%]
+                                    border-b rounded-sm ${darkMode ? 'bg-gray-900 border-purple-900 text-yellow-100' : 'bg-gray-200 border-purple-300 text-black'}`} 
+                                   />
+                                    <button type='submit' className='p-1'><img src={sendIcon} style={{ width: 'auto', height: '30px' }}/></button>
+                            </form>
+                        </div>
                     </div>
-                  </div>
-
+                    ))) : (
+                      <p className='py-40'>No posts available</p>
+                  )}
                   
                 </div>
             </main>

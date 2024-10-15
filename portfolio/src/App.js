@@ -6,6 +6,7 @@ import Blog from './Blog';
 import Experience from './Experience';
 import Projects from './Projects';
 import ContactMe from './ContactMe';
+import AddPost from './AddPost';
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path='/contact-me'>
               <ContactMe />
+            </Route>
+            <Route path='/add-post'>
+              <AddPost />
             </Route>
           </Switch>
       </div>
