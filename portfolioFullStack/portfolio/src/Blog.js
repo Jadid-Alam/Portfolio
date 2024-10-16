@@ -11,14 +11,38 @@ const Blog = () => {
     const [inverse, setInverse] = useState(false);
     const [mouse, setMouse] = useState({x:0, y:0});
     const [fading, setFading] = useState({});
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+      const savedMode = sessionStorage.getItem('darkMode');
+      return savedMode ? JSON.parse(savedMode) : false;
+    });
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [reload, setReload] = useState(false);
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
 
-    const toggleDarkMode = () => {setDarkMode(!darkMode);};
+    const toggleDarkMode = () => {
+      if (darkMode) {
+          setDarkMode(false);
+      }
+      else
+      {
+          setDarkMode(true);
+      }
+      sessionStorage.setItem('darkMode', JSON.stringify(darkMode));
+    };
+
+    const handleDownload = () => {
+      const fileUrl = "/Jadid-Alam-CV.pdf";
+      const link = document.createElement('a');
+
+      link.href = fileUrl;
+      link.download = "Jadid-Alam-CV.pdf"; 
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
     
     const changeColor = () => {
         setColor((color) => {
@@ -200,7 +224,7 @@ const Blog = () => {
                   <nav className="mr-1 items-end sm:mr-2 md:mr-4">
                     <ul className="flex justify-end">
                         <li className={`p-1 md:p-2 transform transition hover:text-purple-600 hover:translate-y-1 hover:transform hover:transition
-                            ${darkMode ? 'text-purple-500' : 'text-black'}`}><Link to='/resume' className='FINISH THISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'>Resume</Link></li>  
+                            ${darkMode ? 'text-purple-500' : 'text-black'}`}><a onClick={handleDownload}>Resume</a></li>  
                         <li className={`p-1 md:p-2 transform transition hover:text-purple-600 hover:translate-y-1 hover:transform hover:transition
                             ${darkMode ? 'text-purple-500' : 'text-black'}`}><Link to='/contact-me'>Contact Me</Link></li>
                         <button onClick={toggleDarkMode}><img src={darkMode ? lightModeImage : darkModeImage} style={{ width: '35px', height: 'auto' }} /></button>
