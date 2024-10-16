@@ -7,6 +7,13 @@
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     },
     {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
+    },
+    {
       "src": "portfolio/package.json",
       "use": "@vercel/static-build",
       "config": {
@@ -17,19 +24,24 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/portfolio/build/static/$1"
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
     },
     {
       "src": "/api/(.*)",
       "dest": "portfolioBackend/wsgi.py"
     },
     {
-      "src": "/(.*)",
-      "dest": "/portfolio/build/$1"
+      "src": "^/admin/(.*)",
+      "dest": "portfolioBackend/wsgi.py"
     },
     {
-      "src": "/django-static/(.*)",
-      "dest": "portfolioBackend/staticfiles/$1"
+      "src": "/(.*)",
+      "dest": "/portfolio/build/$1"
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
