@@ -42,5 +42,8 @@
       "src": "/(.*)",
       "dest": "/portfolio/build/index.html"
     }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
