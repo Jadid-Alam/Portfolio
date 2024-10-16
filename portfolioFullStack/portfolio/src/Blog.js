@@ -20,6 +20,7 @@ const Blog = () => {
     const [reload, setReload] = useState(false);
 
     const colours = [{r:119, g:0, b:225}, {r:47, g:0, b:99}];
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const toggleDarkMode = () => {
       if (darkMode) {
@@ -105,7 +106,8 @@ const Blog = () => {
       formData.append('comment', e.target[0].value);
       e.target[0].value = '';
       try {
-        const response = await fetch(`http://localhost:8000/api/blog/comment/${postId}/`, {
+        
+        const response = await fetch(`${apiUrl}/api/blog/comment/${postId}/`, {
               method: 'POST',
               body: formData,
               headers: {
@@ -134,7 +136,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-          const response = await fetch('http://localhost:8000/api/blog/comments/');
+          const response = await fetch(`${apiUrl}/api/blog/comments/`);
           if (!response.ok) {
               throw new Error('Network response was not ok');
           }
@@ -149,7 +151,7 @@ const Blog = () => {
     fetchComments();
     const fetchPosts = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/blog/');
+            const response = await fetch(`${apiUrl}/api/blog/`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

@@ -19,7 +19,8 @@ const AddPost = () => {
     formData.append('image', image);  
 
     try {
-      const response = await fetch('http://localhost:8000/api/blog/create/', {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(`${apiUrl}/api/blog/create/`, {
         method: 'POST',
         body: formData,
         headers: {

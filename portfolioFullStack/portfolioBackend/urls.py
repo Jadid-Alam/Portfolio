@@ -24,3 +24,4 @@ urlpatterns = [
     path('', include('blog_posts.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [path('<path:path>', TemplateView.as_view(template_name='index.html'))]
