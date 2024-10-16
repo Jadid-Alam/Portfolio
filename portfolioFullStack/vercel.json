@@ -40,8 +40,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/portfolio/build/$1"
+      "dest": "/portfolio/build/index.html"
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  ]
 }
