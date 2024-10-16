@@ -26,6 +26,10 @@
     {
       "src": "/(.*)",
       "dest": "/portfolio/build/$1"
+    },
+    {
+      "src": "/django-static/(.*)",
+      "dest": "portfolioBackend/staticfiles/$1"
     }
   ]
 }
